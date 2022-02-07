@@ -1,0 +1,96 @@
+// CSS Documents
+$blue-color: #1A6AE1;
+$orange-color: #F45A2A;
+$white-color: #FFFFFF;
+$green-color: #2af0b4;
+
+ion-grid {
+    padding: 10px;
+}
+.blue {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $blue-color;
+    padding: 10px;
+}
+.orange {
+    color: $orange-color;
+    font-weight: 600;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.add-new {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    ion-chip {
+        display: flex; 
+        justify-content: center;
+    }
+}
+
+a.ion-text-left{
+    text-decoration: none;
+    color: $blue-color;
+    font-weight: 800;
+    font-size: 12px;
+    float: right;
+}
+ion-select {
+    padding-left: 10px;
+    padding-right: 8px;
+    font-size: 14px;
+}
+ion-datetime {
+    padding-left: 10px;
+}
+ion-label {
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+ion-datetime {
+    font-size: 14px;
+}
+ion-textarea {
+    font-size: 14px;
+}
+.txt-wrapper {
+    padding-left: 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    border: 1px solid #d3d7da9a;
+}
+.rounded {
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    color: $blue-color;
+    border: 2px solid $green-color;
+    box-shadow: 0px 8px 8px #0000001A;
+    // background: $green-color;
+}
+.select-wrapper {
+    border-radius: 4px;
+    border: 1px solid #d3d7da9a;
+}
+.loading-estimate {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    margin: 0 auto;
+    // height: 100vh;
+    background: #ffffff17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        
+        span {
+            font-size:14px;
+            font-weight: 400;
+        }
+}

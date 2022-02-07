@@ -1,0 +1,11 @@
+<ion-searchbar class="search-bar" [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()"
+  placeholder="Search for a place" (ionClear)="ClearAutocomplete()">
+</ion-searchbar>
+
+<ion-list [hidden]="autocompleteItems.length == 0 || hideList">
+  <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+    {{ item.description }}
+  </ion-item>
+</ion-list>
+
+<!-- <ion-input #places type="text" name="search"></ion-input> -->

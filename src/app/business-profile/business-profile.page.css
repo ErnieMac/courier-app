@@ -1,0 +1,25 @@
+.status {
+  color: #1A6AE1;
+}
+
+ion-grid {
+  padding: 10px;
+}
+
+ion-label h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+ion-label p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A6AE1;
+  text-transform: uppercase;
+}
+
+ion-list-header {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=business-profile.page.css.map */

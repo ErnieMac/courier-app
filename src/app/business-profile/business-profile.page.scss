@@ -1,0 +1,29 @@
+// CSS Documents
+
+$blue-color: #1A6AE1;
+
+.status {
+    color: $blue-color;
+}
+ion-grid {
+    padding: 10px;
+}
+ion-label {
+
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 600;
+        color: $blue-color;
+        text-transform: uppercase;
+    }
+}
+ion-list-header {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+

@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="business-dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android">
+      Recurring payment
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios">Recurring payment</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text class="ion-text-center">
+          <p>Set up recurring payment when your credit drops below a specified amount </p>
+          <p>If recurring payment is set to No. Recurring will occur once, else this will repeat until deleted </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="formGroup" (ngSubmit)="handleFormSubmission(formGroup.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Recurring payment<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select formControlName="recurring" placeholder="Select">
+              <ion-select-option value="yes" Selected>Yes</ion-select-option>
+              <ion-select-option value="no">No</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Saved card<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select *ngIf="savedCards$ | async as cards" formControlName="cardId" slot="start"
+              placeholder="Saved cards">
+              <ion-select-option *ngFor="let card of cards" [value]="card.cardId">{{card.cardReference}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(cardId.invalid &&(cardId.dirty || cardId.touched))|| isError" color="danger">Select a
+            card</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Top up credit by <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="topUpAmount" type="number" pattern="\d+"  placeholder="50"></ion-input>
+          </div>
+          <ion-label *ngIf="(topUpAmount.invalid &&(topUpAmount.dirty || topUpAmount.touched))|| isError"
+            color="danger">Top up amount is required</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>When credit reaches <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="creditLimit" type="number" pattern="\d+" placeholder="20"></ion-input>
+          </div>
+          <ion-label *ngIf="(creditLimit.invalid &&(creditLimit.dirty || creditLimit.touched))|| isError"
+            color="danger">Amount is required</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="btnTxt == 'Please wait...' ? true : false" type="submit" color="primary"
+            expand="block">
+            {{btnTxt}}
+          </ion-button>
+
+          <ion-button *ngIf="showRecurringDeleteButton"  (click)="deleteRecurring()" color="danger"
+                      expand="block">
+            Delete Recurring
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

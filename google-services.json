@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "1052494268447",
+    "firebase_url": "https://delivermate-app-default-rtdb.firebaseio.com",
+    "project_id": "delivermate-app",
+    "storage_bucket": "delivermate-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052494268447:android:1e8ca254886808bc586d2a",
+        "android_client_info": {
+          "package_name": "com.delivermateapp.business"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052494268447-erev2kh991koo6nva3a2ppldlq7g7ser.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsQFEDpqI87u9C3sOooeAgBJ7W5ODERsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052494268447-erev2kh991koo6nva3a2ppldlq7g7ser.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1052494268447-bchg36jamkokmrg8dc5u2465ufh915bs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.delivermateapp.business"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052494268447:android:54642c6bae2b1a70586d2a",
+        "android_client_info": {
+          "package_name": "com.delivermateapp.courier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052494268447-erev2kh991koo6nva3a2ppldlq7g7ser.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsQFEDpqI87u9C3sOooeAgBJ7W5ODERsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052494268447-erev2kh991koo6nva3a2ppldlq7g7ser.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1052494268447-bchg36jamkokmrg8dc5u2465ufh915bs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.delivermateapp.business"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

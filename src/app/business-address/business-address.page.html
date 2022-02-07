@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android" color="primary">
+      Business address
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios" color="primary">Add drop address</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form>
+    <ion-list lines="full" class="ion-padding">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Address Line 1 <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <div class="txt-wrapper">
+              <ion-input type="text" placeholder="14 Elm Lane"></ion-input>
+            </div>
+            <ion-label color="danger">Address Line 1 is required</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Address Line 2 <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <div class="txt-wrapper">
+              <ion-input type="text" placeholder="London"></ion-input>
+            </div>
+            <ion-label color="danger">Address Line 2 is required</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Postcode <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <div class="txt-wrapper">
+              <ion-input type="text" placeholder="EW2 6TR"></ion-input>
+            </div>
+            <ion-label color="danger">Postcode is required</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>How many locations do you have?<ion-text color="danger">*</ion-text>
+            </ion-label>
+            <div class="txt-wrapper">
+              <ion-input type="number" placeholder="3"></ion-input>
+            </div>
+            <ion-label color="danger">Locations is required</ion-label>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="primary" expand="block" [routerLink]="['/']">Submit
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

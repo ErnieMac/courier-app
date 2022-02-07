@@ -1,0 +1,141 @@
+.blue {
+  color: #1A6AE1;
+}
+
+.orange {
+  color: #F45A2A;
+}
+
+ion-card-header {
+  padding-bottom: 0px;
+}
+
+.distance {
+  float: right;
+  font-size: 10px;
+  color: #F45A2A;
+  font-weight: 200;
+  text-transform: none;
+}
+
+.duration {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 14px;
+  padding-left: 25px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+ion-badge {
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+ion-chip {
+  float: right;
+}
+
+ion-chip .cost {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.location-meta {
+  margin-bottom: 5px;
+}
+
+.location-meta .blue-fade {
+  color: #1A6AE1;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  padding-top: 2px;
+  opacity: 0.7;
+}
+
+.location-meta .orange-fade {
+  color: #F45A2A;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 12px;
+  padding-top: 2px;
+  opacity: 0.7;
+}
+
+.location-meta div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.location-meta div img {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.bg-blue, .bg-orange {
+  padding: 10px 0px;
+}
+
+.ion-text-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  top: 160px;
+}
+
+.ion-text-center h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A6AE1;
+}
+
+.loader-wrapper {
+  height: 54vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.loader-wrapper img {
+  width: 88px;
+}
+/*# sourceMappingURL=ongoing-deliveries.page.css.map */

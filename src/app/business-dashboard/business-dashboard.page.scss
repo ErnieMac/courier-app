@@ -1,0 +1,35 @@
+// CSS Documents
+$orange-color: #F45A2A;
+$blue-color: #1A6AE1;
+$black-color: #2F373D;
+$green-color: #2AF0B4;
+$white-color: #FFFFFF;
+
+.card-orange {
+    background: $orange-color 0% 0% no-repeat;
+    box-shadow: 0px 10px 10px #0000001A;
+    border-radius: 8px;
+    opacity: 1;
+}
+.card-green {
+    background: $green-color 0% 0% no-repeat;
+    box-shadow: 0px 10px 10px #0000001A;
+    border-radius: 8px;
+    opacity: 1;
+}
+.card-blue {
+    background: $blue-color 0% 0% no-repeat;
+    box-shadow: 0px 10px 10px #0000001A;
+    border-radius: 8px;
+    opacity: 1;
+}
+.heading-title {
+    color: $white-color;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 15px;
+}
+ion-card {
+    height: 120px;
+    margin: 5px;
+}

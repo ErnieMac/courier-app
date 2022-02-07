@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android" color="primary">
+      Phone verification
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios" color="primary">Phone verification</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-text class="ion-text-center">
+          <p>Please click <b>TEXT</b> or <b>CALL</b> button to recieve the 4-digit code sent to your phone number:<br>
+            <ion-text color="primary" *ngIf="userDetails$ | async as user"><b>+{{user.userDetails.intCode}}
+                {{user.userDetails.mobileNumber}}</b></ion-text>
+          </p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="codeForm" (ngSubmit)="verifyVerificationCode(codeForm.value)">
+          <ion-grid>
+            <ion-label>Verification code</ion-label>
+            <ion-row>
+              <ion-col class="verify-number">
+                <div>
+                  <ion-input type="text" formControlName="verificationNumber" placeholder="1234" maxlength="4">
+                  </ion-input>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- <p class="ion-text-center">Didn’t get the code? 
+              <ion-text color="primary"><b>Resend</b></ion-text>
+            </p> -->
+
+          <ion-row class="ion-align-item-center">
+            <ion-col class="ion-text-center" size="6">
+              <ion-button color="primary" (click)="generateVerificationCode('TEXT')" fill="outline" size="small"
+                expand="inline-block">{{waitText == 'sending' ? 'Please wait...' : 'TEXT'}}
+                <ion-icon slot="start" name="phone-portrait-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+
+            <ion-col class="ion-text-center" size="6">
+              <ion-button color="primary" (click)="generateVerificationCode('CALL')" fill="outline" size="small"
+                expand="inline-block">{{waitText == 'calling' ? 'Please wait...' : 'CALL'}}
+                <ion-icon slot="start" name="call-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" color="primary" expand="block">
+                {{waitText == null ? 'Verify' : 'Please wait...'}}</ion-button>
+              <!-- <ion-button type="submit" color="primary" expand="block" [routerLink]="['/change-phone-number']">Change
+                phone
+                number</ion-button> -->
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block" fill="outline"
+            [routerLink]="['/change-phone-number']">Change
+            phone number</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

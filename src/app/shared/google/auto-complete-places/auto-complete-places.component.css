@@ -1,0 +1,14 @@
+.search-bar {
+  padding: 0;
+  border: 0;
+  border-width: 1px;
+  border-radius: 4px;
+  border-color: #e5e7e9;
+  --box-shadow: none !important;
+}
+
+ion-item {
+  font-size: 14px;
+  font-weight: 600;
+}
+/*# sourceMappingURL=auto-complete-places.component.css.map */

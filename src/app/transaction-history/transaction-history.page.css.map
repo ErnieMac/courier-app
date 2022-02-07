@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,OAAO,CAAC;EACJ,KAAK,EAHI,OAAO;EAIhB,WAAW,EAAE,GAAG;CACnB;;AACD,AAAA,SAAS,CAAC,EAAE,CAAC;EACT,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "transaction-history.page.scss"
+    ],
+    "names": [],
+    "file": "transaction-history.page.css"
+}

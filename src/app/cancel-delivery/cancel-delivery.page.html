@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="business-dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android">
+      Cancel delivery
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios">Cancel delivery</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="formGroup" (ngSubmit)="handleFormSubmission(formGroup.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Reason for cancelling <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select slot="start" formControlName="cancelReason" placeholder="Select reason">
+                <ion-select-option value="Accidentally created">Accidentally created</ion-select-option>
+                <ion-select-option value="Incorrect package size">Incorrect package size</ion-select-option>
+                <ion-select-option value="Package damaged">Package damaged</ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(cancelReason.invalid &&(cancelReason.dirty || cancelReason.touched))|| isError"
+            color="danger">Cancel reason is required</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Cancel note </ion-label>
+          <div class="txt-wrapper">
+            <ion-textarea formControlName="cancelNotes" placeholder="Enter your cancellation notes here...">
+            </ion-textarea>
+          </div>
+          <!-- <ion-label color="danger">Cancel note is required</ion-label> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block">Submit
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

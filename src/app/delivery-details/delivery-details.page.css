@@ -1,0 +1,84 @@
+.green-color {
+  color: #2af0b4;
+}
+
+.blue-color {
+  color: #1a6ae1;
+}
+
+.orange-color {
+  color: #F45A2A;
+}
+
+ion-grid {
+  padding: 10px;
+}
+
+ion-label {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+ion-label h3 {
+  font-size: 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 0;
+  font-weight: inherit;
+}
+
+ion-label p {
+  font-size: 12px;
+}
+
+ion-avatar {
+  margin-right: 5px;
+}
+
+ion-avatar img {
+  margin-right: 5px;
+}
+
+.status {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.status span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.meta {
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #1a6ae1;
+}
+
+.meta span {
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.delivery-meta {
+  text-transform: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.map {
+  height: 46vh !important;
+  z-index: 0;
+  width: 100%;
+}
+/*# sourceMappingURL=delivery-details.page.css.map */

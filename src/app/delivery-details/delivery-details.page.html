@@ -1,0 +1,203 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="business-dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android" color="primary">
+      Delivery details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="getDetails($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios" color="primary">Delivery details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" style="text-align: left">
+        <div>
+          <ion-chip outline color="primary">
+            <ion-label class="status">Status: <span class="green-color"
+                *ngIf="job$ | async as job">{{job.status.toUpperCase()}}</span></ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+
+      <ion-col size="6" style="text-align: right">
+        <div>
+          <ion-chip outline color="primary">
+            <ion-label class="status">Category: <span class="green-color"
+                *ngIf="job$ | async as job">{{job.deliveryType.toUpperCase()}}</span></ion-label>
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="5" style="text-align: left">
+        <div>
+          <ion-chip outline color="primary">
+            <ion-label class="status" >Date: <span class="green-color">27/01/2022</span></ion-label>
+            <!-- <ion-label class="status" >Date: <span class="green-color">{{timestampToDate(job.picktime) }}</span></ion-label> -->
+          </ion-chip>
+        </div>
+      </ion-col>
+
+      <ion-col size="7" style="text-align: right">
+        <div>
+          <ion-chip outline color="primary">
+            <ion-label class="status" >Pick Up Time: <span class="green-color">3:00 PM</span></ion-label>
+            <!-- <ion-label class="status" >Date: <span class="green-color">{{timestampToTime(job.picktime) }}</span></ion-label> -->
+          </ion-chip>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="meta">
+        <div>
+          Package Size<br><span *ngIf="job$ | async as job">{{job.parcelSize.toUpperCase()}}</span>
+        </div>
+      </ion-col>
+
+      <ion-col class="meta">
+        <div>
+          Distance <br><span *ngIf="job$ | async as job">{{job.distance}}KM</span>
+        </div>
+      </ion-col>
+
+      <ion-col class="meta">
+        <div>
+          Package Cost <br><span *ngIf="job$ | async as job">£{{job.price | number:'1.2-2'}}</span>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="delivery-meta" size="12">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start">
+            <img src="assets/location-icon-blue.svg">
+          </ion-avatar>
+          <ion-label>
+            <p class="blue-color" style="opacity: 0.7">Pick Up</p>
+            <h3 class="blue-color" *ngIf="job$ | async as job">{{job.pickUpDetails.name}}</h3>
+            <p class="blue-color" *ngIf="job$ | async as job">{{job.pickUpDetails.addressLineOne}}
+              {{job.pickUpDetails.addressLineTwo}}, {{job.pickUpDetails.postcode}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col class="delivery-meta" size="12">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start">
+            <img src="assets/location-icon-orange.svg">
+          </ion-avatar>
+          <ion-label>
+            <p class="orange-color" style="opacity: 0.7">Drop off</p>
+            <h3 class="orange-color" *ngIf="job$ | async as job">{{job.dropOffDetails.name}}</h3>
+            <p class="orange-color" *ngIf="job$ | async as job">{{job.dropOffDetails.addressLineOne}}
+              {{job.dropOffDetails.addressLineTwo}}, {{job.dropOffDetails.postcode}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="job$ | async as job">
+    <ion-row *ngIf="job.status == 'collecting' || job.status == 'collected'">
+      <ion-col class="delivery-meta" size="6">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-avatar slot="start">
+            <img src="assets/avatar.svg">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{job.assignedCourier.firstname}}</h3>
+            <p class="blue-color">ID: {{job.assignedCourier.courierId}}</p>
+            <p class="blue-color">Vehicle: {{job.assignedCourier.vehicleType}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col class="delivery-meta" size="3">
+        <div>
+          <ion-fab vertical="center" horizontal="start" slot="fixed" (click)="callCourier(job)">
+            <ion-fab-button color="success">
+              <!-- <ion-icon name="call"></ion-icon> -->{{calling ? 'Calling...' : 'Call'}}
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+        <!-- <div>
+          <ion-chip (click)="callCourier(job)">
+            <ion-icon name="call-outline" color="primary"></ion-icon>
+            <ion-label color="primary">{{calling ? 'Calling...' : 'Call'}}</ion-label>
+          </ion-chip>
+        </div> -->
+      </ion-col>
+
+      <ion-col class="delivery-meta" size="3">
+        <div>
+          <ion-fab vertical="center" horizontal="end" slot="fixed">
+            <ion-fab-button>
+              <ion-icon name="chatbubbles"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="job.status == 'available'">
+      <ion-col size="12" style="text-align: center">
+        <ion-chip color="primary">
+          <ion-label class="status">Courier: <span class="orange-color">Not Assigned</span></ion-label>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="job.deliveryType == 'delivery'">
+      <ion-col size="6">
+        <ion-button color="primary" expand="block" fill="outline">Secure code: {{ job.secureCode }}
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-button *ngIf="job$ | async as job" type="submit" color="danger" expand="block"
+          [routerLink]="['/cancel-delivery',job.id]">Cancel delivery
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" style="text-align: left">
+          <!-- <div *ngIf="job$ | async as job" [routerLink]="['/edit-delivery',job.id]"> -->
+          <div *ngIf="job$ | async as job" (click)="editJob(job)">
+            <ion-button color="primary" fill="outline">Edit Delivery</ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="6" style="text-align: right">
+          <div *ngIf="job$ | async as job" [routerLink]="['/make-claim',job.id]">
+            <ion-button color="primary">Make a claim</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

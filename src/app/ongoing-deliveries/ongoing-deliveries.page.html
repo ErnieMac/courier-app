@@ -1,0 +1,281 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="business-dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android">
+      My deliveries
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios">My deliveries</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-segment [(ngModel)]="selectedTab">
+          <ion-segment-button (click)="getOngoingJobs()" value="Ongoing">
+            <ion-label>Ongoing</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button (click)="getScheduledJobs()" value="Scheduled">
+            <ion-label>Scheduled</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button (click)="getCompletedJobs()" value="Completed">
+            <ion-label>Completed</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Ongoing Deliveries -->
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div *ngIf="selectedTab == 'Ongoing'">
+      <div *ngIf="!ongoingJobs$" class="loader-wrapper">
+        <img src="assets/loader.svg">
+        <h5 class="loading-text">Loading deliveries...</h5>
+      </div>
+      <div *ngIf="ongoingJobs$ | async as jobs">
+        <ion-grid *ngIf="jobs.length == 0">
+          <ion-row>
+            <ion-col ion-padding>
+              <ion-text class="ion-text-center" color="primary">
+                <img src="assets/cross-icon.svg" style="align-items: center;">
+                <h5>No Ongoing deliveries <br>Your Ongoing deliveries will appear here</h5>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-card *ngFor="let job of jobs" (click)="viewJob(job)">
+          <ion-card-header>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="secondary">
+                    Delivery Time: {{job.estimatedTime}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+              <ion-col style="padding-right: 0px;" size="4">
+                <ion-card-subtitle class="distance">
+                  <ion-badge color="primary">
+                    <ion-icon name="navigate"></ion-icon> {{job.distance}}km
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-card-title class="heading">{{job.pickUpDetails.name}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="location-meta bg-blue">
+              <div>
+                <img src="assets/location-icon-blue.svg">
+                <ion-card-subtitle class="blue-fade"> Pick Up</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle blue">{{job.pickUpDetails.addressLineOne}}, {{job.pickUpDetails.postcode}}
+              </ion-card-title>
+            </div>
+
+            <ion-card-title class="heading">{{job.dropOffDetails.name}}</ion-card-title>
+            <div class="location-meta bg-orange">
+              <div>
+                <img src="assets/location-icon-orange.svg">
+                <ion-card-subtitle class="orange-fade"> Drop Off</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle orange">{{job.dropOffDetails.addressLineOne}},
+                {{job.dropOffDetails.postcode}}</ion-card-title>
+            </div>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="success">
+                    Status: {{job.status.toUpperCase()}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+              <ion-col style="padding-right: 0px;" size="4" *ngIf="job.status == 'collecting' || job.status == 'collected'">
+                <ion-card-subtitle class="distance">
+                  <ion-badge color="secondary">
+                    Courier ID: {{job.assignedCourier.courierId}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Scheduled Deliveries -->
+    <div *ngIf="selectedTab == 'Scheduled'">
+      <div *ngIf="!scheduledJobs$" class="loader-wrapper">
+        <img src="assets/loader.svg">
+        <h5 class="loading-text">Loading deliveries...</h5>
+      </div>
+      <div *ngIf="scheduledJobs$ | async as jobs">
+        <ion-grid *ngIf="jobs.length == 0">
+          <ion-row>
+            <ion-col ion-padding class=" empty-state">
+              <ion-text class="ion-text-center" color="primary">
+                <img src="assets/cross-icon.svg" style="align-items: center;">
+                <h5>No Scheduled deliveries <br>Your Scheduled deliveries will appear here</h5>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-card *ngFor="let job of jobs" (click)="viewScheduledJob(job)">
+          <ion-card-header>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="secondary">
+                    Delivery Time: {{job.estimatedTime}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+              <ion-col style="padding-right: 0px;" size="4">
+                <ion-card-subtitle class="distance">
+                  <ion-badge color="primary">
+                    <ion-icon name="navigate"></ion-icon> {{job.distance}}km
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-card-title class="heading">{{job.pickUpDetails.name}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="location-meta bg-blue">
+              <div>
+                <img src="assets/location-icon-blue.svg">
+                <ion-card-subtitle class="blue-fade"> Pick Up</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle blue">{{job.pickUpDetails.addressLineOne}}, {{job.pickUpDetails.postcode}}
+              </ion-card-title>
+            </div>
+
+            <ion-card-title class="heading">{{job.dropOffDetails.name}}</ion-card-title>
+            <div class="location-meta bg-orange">
+              <div>
+                <img src="assets/location-icon-orange.svg">
+                <ion-card-subtitle class="orange-fade"> Drop Off</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle orange">{{job.dropOffDetails.addressLineOne}},
+                {{job.dropOffDetails.postcode}}</ion-card-title>
+            </div>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="success">
+                    PICK UP DATE:{{job.scheduledTime | date : 'dd-MM-YYYY' }}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+              <ion-col style="padding-right: 0px;" size="4">
+                <ion-card-subtitle class="distance">
+                  <ion-badge color="secondary">
+                    PICK UP TIME: {{job.scheduledTime | date: 'HH:mm' }}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Completed Deliveries -->
+    <div *ngIf="selectedTab == 'Completed'">
+      <div *ngIf="!completedJobs$" class="loader-wrapper">
+        <img src="assets/loader.svg">
+        <h5 class="loading-text">Loading deliveries...</h5>
+      </div>
+      <div *ngIf="completedJobs$ | async as jobs">
+        <ion-grid *ngIf="jobs.length == 0">
+          <ion-row>
+            <ion-col ion-padding>
+              <ion-text class="ion-text-center" color="primary">
+                <img src="assets/cross-icon.svg" style="align-items: center;">
+                <h5>No Completed deliveries <br>Your Completed deliveries will appear here</h5>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-card *ngFor="let job of jobs">
+          <ion-card-header>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="secondary">
+                    Delivery Time: {{job.estimatedTime}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+              <ion-col style="padding-right: 0px;" size="4">
+                <ion-card-subtitle class="distance">
+                  <ion-badge color="primary">
+                    <ion-icon name="navigate"></ion-icon> {{job.distance}}km
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-card-title class="heading">{{job.pickUpDetails.name}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <div class="location-meta bg-blue">
+              <div>
+                <img src="assets/location-icon-blue.svg">
+                <ion-card-subtitle class="blue-fade"> Pick Up</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle blue">{{job.pickUpDetails.addressLineOne}}, {{job.pickUpDetails.postcode}}
+              </ion-card-title>
+            </div>
+
+            <ion-card-title class="heading">{{job.dropOffDetails.name}}</ion-card-title>
+            <div class="location-meta bg-orange">
+              <div>
+                <img src="assets/location-icon-orange.svg">
+                <ion-card-subtitle class="orange-fade"> Drop Off</ion-card-subtitle>
+              </div>
+              <ion-card-title class="subtitle orange">{{job.dropOffDetails.addressLineOne}},
+                {{job.dropOffDetails.postcode}}</ion-card-title>
+            </div>
+            <ion-row>
+              <ion-col style="padding-left: 0px;" size="8">
+                <ion-card-subtitle class="duration">
+                  <ion-badge color="success">
+                    Cost: £{{job.price | number:'1.2-2'}}
+                  </ion-badge>
+                </ion-card-subtitle>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-content>

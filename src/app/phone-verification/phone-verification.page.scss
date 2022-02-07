@@ -1,0 +1,33 @@
+// CSS Documents
+
+$blue-color: #1A6AE1;
+
+ion-grid {
+    padding: 10px;
+}
+ion-label {
+    font-weight: 600;
+    font-size: 14px;
+}
+.verify-number {
+    margin: 5px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 18px;
+    border: 1px solid $blue-color;
+    // border: 1px solid #d3d7da9a;
+}
+.native-.sc-ion-input-ios {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.native-input.sc-ion-input-md {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+ion-text {
+    p {
+        font-size: 14px;
+    }
+}

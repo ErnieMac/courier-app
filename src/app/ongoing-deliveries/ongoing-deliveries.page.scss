@@ -1,0 +1,117 @@
+// CSS Documents
+
+$orange-color: #F45A2A;
+$blue-color: #1A6AE1;
+
+.blue {
+    color: $blue-color;
+}
+.orange {
+    color: $orange-color;
+}
+
+ion-card-header {
+    padding-bottom: 0px;
+}
+.distance {
+    float: right;
+    font-size: 10px;
+    color: $orange-color;
+    font-weight: 200;
+    text-transform: none;
+}
+.duration {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 600;
+}
+.subtitle {
+    font-size: 14px;
+    padding-left: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+ion-badge {
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 4px;
+}
+ion-chip {
+    float: right;
+
+    .cost {
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: none;
+    }
+}
+.location-meta {
+    margin-bottom: 5px;
+
+    .blue-fade {
+        color: $blue-color;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 12px;
+        padding-top: 2px;
+        opacity: 0.7;
+    }
+    .orange-fade {
+        color: $orange-color;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 12px;
+        padding-top: 2px;
+        opacity: 0.7;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        
+        img {
+            width: 20px;
+            margin-right: 5px;
+        }
+    }
+}
+
+.bg-blue, .bg-orange {
+    padding: 10px 0px;
+}
+
+.ion-text-center {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative;
+    top: 160px;
+    
+    h5 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: $blue-color;
+}
+
+.loader-wrapper {
+    height:54vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    img {
+        width: 88px;
+    }
+}

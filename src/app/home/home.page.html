@@ -1,0 +1,27 @@
+<ion-content class="auth-form background">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center>
+        <img src="assets/DeliverMate-Business.svg" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col align-self-center>
+          <ion-button [routerLink]="['/login']" expand="block" color="tertiary">Login</ion-button>
+          <ion-button [routerLink]="['/create-account']" expand="block" color="primary">Create account</ion-button>
+
+          <p class="ion-text-center">By proceeding, you agree to our<br>
+            <a href="https://www.delivermateapp.com/docs/DeliverMate-Terms-&-Conditions.pdf" target="_blank"><b>Terms
+              of service</b></a>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAEI,SAFK,CAEL,EAAE,CAAC;EACF,KAAK,EALG,OAAO;EAMf,WAAW,EAAE,GAAG;CAChB",
+    "sources": [
+        "chat-history.page.scss"
+    ],
+    "names": [],
+    "file": "chat-history.page.css"
+}

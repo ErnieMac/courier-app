@@ -1,0 +1,207 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="business-dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android">
+      Add new delivery
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios">Add new delivery</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid class="loading-estimate" *ngIf="!addressesLoaded$">
+    <ion-row>
+      <ion-col>
+        <span>Loading, Please wait...</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="loading-estimate" *ngIf="loading | async">
+    <ion-row>
+      <ion-col>
+        <span>Estimating, Please wait...</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="formGroup" (ngSubmit)="handleFormSubmission(formGroup.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="7">
+          <ion-label>Pick up address <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select (ionChange)="handleonChange($event)" formControlName="pickUpId" slot="start"
+              *ngIf="pickUpAddress$ | async as addresses" placeholder="Select">
+              <ion-select-option *ngFor="let address of addresses" data-pickupAddress="Pickup 1" [value]="address.id">
+                {{address.addressIdentifierName}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(pickUpId.invalid &&(pickUpId.dirty || pickUpId.touched))|| isError" color="danger">Select Pick up address</ion-label>
+        </ion-col>
+
+        <ion-col size="5" class="add-new">
+          <ion-chip color="primary" [routerLink]="['/add-new-address']">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label>Add New</ion-label>
+          </ion-chip>
+        </ion-col>
+
+        <ion-col>
+          <ion-chip color="primary" class="selected-address" *ngIf="selectedPUA$ | async as address">
+            <ion-label>{{address.addressLineOne}} {{address.addressLineTwo}} {{address.postcode}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="7">
+          <ion-label>Drop off address <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select (ionChange)="handleonChange($event)" formControlName="dropOffId" slot="start"
+              *ngIf="dropOffAddress$ | async as addresses" placeholder="Select">
+              <ion-select-option *ngFor="let address of addresses" data-pickupAddress="Pickup 1" [value]="address.id">
+                {{address.addressIdentifierName}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(dropOffId.invalid &&(dropOffId.dirty || dropOffId.touched))|| isError" color="danger">Select Drop off address</ion-label>
+        </ion-col>
+
+        <ion-col size="5" class="add-new">
+          <ion-chip color="secondary" [routerLink]="['/add-new-address']">
+            <ion-icon name="add-circle"></ion-icon>
+            <ion-label>Add New</ion-label>
+          </ion-chip>
+        </ion-col>
+
+        <ion-col class="orange">
+          <ion-chip color="secondary" class="selected-address" *ngIf="selectedDOA$ | async as address">
+            <ion-label>{{address.addressLineOne}} {{address.addressLineTwo}} {{address.postcode}}</ion-label>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Pick up date <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-datetime (ionChange)="handleonChange($event)" formControlName="scheduleDate" value="1990-02-19" displayFormat="DD-MMM-YYYY" placeholder="Choose Date"></ion-datetime>
+          </div>
+          <ion-label *ngIf="(scheduleDate.invalid &&(scheduleDate.dirty || scheduleDate.touched))|| isError" color="danger">Choose Pick up date</ion-label>
+        </ion-col>
+      <!-- </ion-row>
+
+      <ion-row> -->
+        <ion-col>
+          <ion-label>Pick up time <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-datetime (ionChange)="handleonChange($event)" formControlName="scheduleTime" display-format="h:mm A" picker-format="h:mm A" placeholder="Choose time"></ion-datetime>
+          </div>
+          <ion-label *ngIf="(scheduleTime.invalid &&(scheduleTime.dirty || scheduleTime.touched))|| isError" color="danger">Choose Pick up time</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Delivery type <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select (ionChange)="handleonChange($event)" formControlName="deliveryType" slot="start"
+              placeholder="Select type">
+              <ion-select-option data-deliveryType="delivery" value="delivery">Delivery</ion-select-option>
+              <ion-select-option data-deliveryType="pick up" value="pick up">Pick up</ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(deliveryType.invalid &&(deliveryType.dirty || deliveryType.touched))|| isError"
+            color="danger">Select Delivery type</ion-label>
+        </ion-col>
+
+        <ion-col>
+          <ion-label>Package type <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select (ionChange)="handleonChange($event)" formControlName="jobType" slot="start"
+              placeholder="Package type">
+              <ion-select-option data-packageType="food" value="food">Food</ion-select-option>
+              <ion-select-option data-packageType="e-commerce retail" value="e-commerce retail">E-Commerce & Retail</ion-select-option>
+              <ion-select-option data-packageType="letters packages" value="letters packages">Letters & Packages</ion-select-option>
+              <ion-select-option data-packageType="groceries" value="groceries">Groceries</ion-select-option>
+              <ion-select-option data-packageType="medical supplies" value="medical supplies">Medical Supplies</ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(jobType.invalid &&(jobType.dirty || jobType.touched))|| isError" color="danger">Select Package type</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Package size <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="select-wrapper">
+            <ion-select (ionChange)="handleonChange($event)" formControlName="parcelSize" slot="start"
+              placeholder="Package size">
+              <ion-select-option data-packageSize="Extra small" value="xs">XS - Bicycle/Motorbike</ion-select-option>
+              <ion-select-option data-packageSize="Small" value="s">S - Bicycle/Motorbike</ion-select-option>
+              <ion-select-option data-packageSize="Medium" value="m">M - Bicycle/Motorbike/Car</ion-select-option>
+              <ion-select-option data-packageSize="Large" value="l">L - Car</ion-select-option>
+              <ion-select-option data-packageSize="Extra Large" value="xl">XL - Small van</ion-select-option>
+              <ion-select-option data-packageSize="Extra Extra Large" value="xxl">XXL - Large van
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <ion-label *ngIf="(parcelSize.invalid &&(parcelSize.dirty || parcelSize.touched))|| isError" color="danger">Select Package size</ion-label>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <ion-label>Delivery notes </ion-label>
+          <div class="txt-wrapper">
+            <ion-textarea formControlName="jobDescription" placeholder="Enter any delivery notes here...">
+            </ion-textarea>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Delivery distance </ion-label>
+          <div class="txt-wrapper rounded">
+            <ion-input formControlName="estimatedDistance" value="2.4km" readonly></ion-input>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <ion-label>Delivery cost </ion-label>
+          <div class="txt-wrapper rounded" color="secondary">
+            <ion-input formControlName="estimatedCost" value="£25.50" readonly></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="btnTxt == 'Please wait...' || btnDisabled ? true : false" type="submit" color="primary"
+            expand="block">
+            {{btnTxt}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

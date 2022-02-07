@@ -1,0 +1,36 @@
+.card-orange {
+  background: #F45A2A 0% 0% no-repeat;
+  -webkit-box-shadow: 0px 10px 10px #0000001A;
+          box-shadow: 0px 10px 10px #0000001A;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.card-green {
+  background: #2AF0B4 0% 0% no-repeat;
+  -webkit-box-shadow: 0px 10px 10px #0000001A;
+          box-shadow: 0px 10px 10px #0000001A;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.card-blue {
+  background: #1A6AE1 0% 0% no-repeat;
+  -webkit-box-shadow: 0px 10px 10px #0000001A;
+          box-shadow: 0px 10px 10px #0000001A;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.heading-title {
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 15px;
+}
+
+ion-card {
+  height: 120px;
+  margin: 5px;
+}
+/*# sourceMappingURL=business-dashboard.page.css.map */

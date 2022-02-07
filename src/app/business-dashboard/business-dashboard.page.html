@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <ion-title class="title-android">
+      <span *ngIf="userDetails$ | async as user">{{user.userDetails.businessName}}</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios"><span *ngIf="userDetails$ | async as user">{{user.userDetails.businessName}}</span></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card [routerLink]="['/add-new-delivery']" color="primary">
+          <div class="heading-title">
+            <ion-icon name="add-circle"></ion-icon><br /> Add New<br> Delivery
+          </div>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card [routerLink]="['/ongoing-deliveries']" color="primary">
+          <div class="heading-title">
+            <ion-icon name="bookmarks"></ion-icon><br /> My <br />Deliveries
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card [routerLink]="['/my-balance']" class="card-blue">
+          <div class="heading-title">
+            <ion-icon name="wallet"></ion-icon><br /> My Balance
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card [routerLink]="['/top-up']" color="primary">
+          <div class="heading-title">
+            <ion-icon name="card"></ion-icon><br />Top Up<br> Credit
+          </div>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card [routerLink]="['/chat-history']" color="primary">
+          <div class="heading-title">
+            <ion-icon name="chatbubbles"></ion-icon><br /> Chat <br />History
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card [routerLink]="['/business-profile']" class="card-blue">
+          <div class="heading-title">
+            <ion-icon name="business"></ion-icon><br /> Business<br /> Profile
+          </div>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card [routerLink]="['/help-support']" color="primary">
+          <div class="heading-title">
+            <ion-icon name="help-circle"></ion-icon><br /> Help &<br /> Support
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

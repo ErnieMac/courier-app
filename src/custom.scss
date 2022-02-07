@@ -1,0 +1,74 @@
+// Custom CSS
+
+$orange-color: #f45a2a;
+$light-color: #fbf4ef;
+$blue-color: #1a6ae1;
+$black-color: #2f373d;
+$grey-color: #7e868c;
+$white-smoke-color: #f6f9fc;
+$green-color: #2af0b4;
+$purple-color: #674df0;
+$white-color: #ffffff;
+
+.orange-color {
+  color: $orange-color;
+}
+.blue-color {
+  color: $blue-color;
+}
+.light-color {
+  color: $light-color;
+}
+.black-color {
+  color: $black-color;
+}
+.grey-color {
+  color: $grey-color;
+}
+.white-smoke-color {
+  color: $white-smoke-color;
+}
+.green-color {
+  color: $green-color;
+}
+.purple-color {
+  color: $purple-color;
+}
+.white-color {
+  color: $white-color;
+}
+.input-style {
+  border: 1px solid $grey-color;
+}
+.button-orange {
+  background-color: $orange-color;
+  color: $white-color;
+  border-color: $orange-color;
+}
+.bacground-color {
+  background-color: $black-color;
+}
+ion-button {
+  margin: 20px 0px;
+  font-weight: bold;
+  height: 50px;
+  text-transform: uppercase;
+}
+ion-title.title-large {
+  text-transform: capitalize;
+  color: $blue-color;
+  font-size: 30px;
+}
+
+.ion-text-center {
+  font-size: 12px;
+}
+.ion-text-left {
+  font-size: 13px;
+}
+.ion-text-center {
+  font-size: 12px;
+}
+.ion-text-left {
+  font-size: 13px;
+}

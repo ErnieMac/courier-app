@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,SAAS,CAAC;EACN,SAAS,EAAE,IAAI;CAClB;;AACD,AAAA,QAAQ,CAAC;EACL,OAAO,EAAE,IAAI;CAChB;;AACD,AAAA,eAAe,CAAC;EACZ,SAAS,EAAE,IAAI;EACf,cAAc,EAAE,SAAS;CAC5B",
+    "sources": [
+        "help-support.page.scss"
+    ],
+    "names": [],
+    "file": "help-support.page.css"
+}

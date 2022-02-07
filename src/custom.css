@@ -1,0 +1,79 @@
+.orange-color {
+  color: #f45a2a;
+}
+
+.blue-color {
+  color: #1a6ae1;
+}
+
+.light-color {
+  color: #fbf4ef;
+}
+
+.black-color {
+  color: #2f373d;
+}
+
+.grey-color {
+  color: #7e868c;
+}
+
+.white-smoke-color {
+  color: #f6f9fc;
+}
+
+.green-color {
+  color: #2af0b4;
+}
+
+.purple-color {
+  color: #674df0;
+}
+
+.white-color {
+  color: #ffffff;
+}
+
+.input-style {
+  border: 1px solid #7e868c;
+}
+
+.button-orange {
+  background-color: #f45a2a;
+  color: #ffffff;
+  border-color: #f45a2a;
+}
+
+.bacground-color {
+  background-color: #2f373d;
+}
+
+ion-button {
+  margin: 20px 0px;
+  font-weight: bold;
+  height: 50px;
+  text-transform: uppercase;
+}
+
+ion-title.title-large {
+  text-transform: capitalize;
+  color: #1a6ae1;
+  font-size: 30px;
+}
+
+.ion-text-center {
+  font-size: 12px;
+}
+
+.ion-text-left {
+  font-size: 13px;
+}
+
+.ion-text-center {
+  font-size: 12px;
+}
+
+.ion-text-left {
+  font-size: 13px;
+}
+/*# sourceMappingURL=custom.css.map */

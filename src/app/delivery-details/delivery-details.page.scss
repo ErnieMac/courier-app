@@ -1,0 +1,82 @@
+// CSS Documents
+
+$blue-color: #1a6ae1;
+$green-color: #2af0b4;
+$orange-color: #F45A2A;
+
+.green-color {
+    color: $green-color;
+}
+.blue-color {
+    color: $blue-color;
+}
+.orange-color {
+    color: $orange-color;
+}
+ion-grid {
+  padding: 10px;
+}
+ion-label {
+  font-weight: 800;
+  text-transform: uppercase;
+
+  h3 {
+    font-size: 13px;
+    display: flex;
+    margin-top: 0;
+    font-weight: inherit;
+  }
+  p {
+      font-size: 12px;
+  }
+}
+ion-avatar {
+  margin-right: 5px ;
+
+  img {
+    margin-right: 5px;
+  }
+}
+.status {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  
+  span {
+      font-size: 12px;
+      font-weight: 800;
+  }
+}
+.meta {
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $blue-color;
+
+  span {
+    font-size: 13px;
+    font-weight: 800;
+    // color: $blue-color;
+    text-align: center;
+  }
+}
+
+.delivery-meta {
+    text-transform: none;
+    display: flex;
+    align-items: center;
+}
+// .flex-col {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-content: center;
+//     align-items: center;
+// }
+
+.map {
+  height: 46vh !important;
+  z-index: 0;
+  width: 100%;
+}

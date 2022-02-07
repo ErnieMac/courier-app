@@ -1,0 +1,124 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-android" color="primary">
+      Add card
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" class="title-ios" color="primary">Add card</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <form [formGroup]="formGroup" (ngSubmit)="handleFormSubmission(formGroup.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Cardholder nickname <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="cardReference" type="text" placeholder="Barclays Bank"></ion-input>
+          </div>
+          <ion-label *ngIf="(cardReference.invalid &&(cardReference.dirty || cardReference.touched))|| isError"
+            color="danger">Cardholder nickname is required</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Cardholder name <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="cardHolderName" type="text" placeholder="John Doe"></ion-input>
+          </div>
+          <ion-label *ngIf="(cardHolderName.invalid &&(cardHolderName.dirty || cardHolderName.touched))|| isError"
+            color="danger">Cardholder name is required</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Card number<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="cardNumber" type="text" placeholder="1234567891011213"></ion-input>
+          </div>
+          <ion-label *ngIf="(cardNumber.invalid &&(cardNumber.dirty || cardNumber.touched))|| isError" color="danger">
+            Card number is required</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Expiry date <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input formControlName="expiryDate" type="text" placeholder="MM/YY"></ion-input>
+          </div>
+          <ion-label *ngIf="(expiryDate.invalid &&(expiryDate.dirty || expiryDate.touched))|| isError"
+            color="danger">Expiry date is required</ion-label>
+        </ion-col>
+
+        <ion-col>
+          <ion-label>CVV<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input type="text" formControlName="cvv" placeholder="***"></ion-input>
+          </div>
+          <ion-label *ngIf="(cvv.invalid &&(cvv.dirty || cvv.touched))|| isError" color="danger">CVV is required
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <!--<ion-row>
+        <ion-col>
+          <ion-label>Address Line 1 <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input type="text" placeholder="25 Chill Lane"></ion-input>
+          </div>
+          <!- <ion-label color="danger">Address Line 1 is required</ion-label> --
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Address Line 2 <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input type="text" placeholder="London"></ion-input>
+          </div>
+          <!- <ion-label color="danger">Address Line 2 is required</ion-label> --
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-label>Postcode <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <div class="txt-wrapper">
+            <ion-input style="text-transform: uppercase;" type="text" placeholder="EW2 6LK"></ion-input>
+          </div>
+          <!- <ion-label color="danger">Postcode is required</ion-label> --
+        </ion-col>
+      </ion-row>-->
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button [disabled]="btnTxt == 'Please wait...' ? true : false" type="submit" color="primary"
+            expand="block">
+            {{btnTxt}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
